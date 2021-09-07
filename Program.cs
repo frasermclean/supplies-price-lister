@@ -38,7 +38,7 @@ namespace SuppliesPriceLister
 
             // read supply data from files
             var humpriesSupplies = HumpriesCsvParser.GetHumphriesSupplies(HumphriesCsvFilename);
-            var megacorpSupplies = MegacorpJsonParser.GetMegacorpSupplies(MegacorpJsonFilename);
+            var megacorpSupplies = MegacorpJsonParser.GetMegacorpSupplies(MegacorpJsonFilename, exchangeRate);
 
             // create combined, sorted list of supplies
             var supplies = new List<ISupply>();

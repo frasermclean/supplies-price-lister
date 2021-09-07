@@ -6,15 +6,15 @@ namespace SuppliesPriceLister.Models
     {
         public string Id { get; set; }
         public string Description { get; set; }
-        public float Price => PriceInCents / 100;
+        public float Price { get; set; }
 
         [JsonProperty("uom")]
         public string UnitOfMeasurement { get; set; }
 
         /// <summary>
-        /// Price in cents.
+        /// Price in US cents.
         /// </summary>
-        public uint PriceInCents { get; set; }
+        public uint PriceInUsCents { get; set; }
 
         /// <summary>
         /// Identifier of supply provider.

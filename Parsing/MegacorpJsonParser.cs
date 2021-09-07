@@ -8,7 +8,7 @@ namespace SuppliesPriceLister.Parsing
 {
     public static class MegacorpJsonParser
     {
-        public static IEnumerable<MegacorpSupply> GetMegacorpSupplies(string filename)
+        public static IEnumerable<MegacorpSupply> GetMegacorpSupplies(string filename, float exchangeRate)
         {
             try
             {
@@ -20,6 +20,10 @@ namespace SuppliesPriceLister.Parsing
                 var supplies = new List<MegacorpSupply>();
                 foreach (var partner in rootObject.Partners)
                     supplies.AddRange(partner.Supplies);
+
+                // iterate though each supply to calculate price in AUD
+                foreach (var supply in supplies)
+                    supply.Price = supply.PriceInUsCents / 100 * exchangeRate;
 
                 return supplies;
             }
