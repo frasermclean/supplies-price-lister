@@ -35,12 +35,15 @@ namespace SuppliesPriceLister.Models
 
         public int CompareTo([AllowNull] Supply other)
         {
-            throw new NotImplementedException();
+            if (other == null)
+                return 1;
+            else
+                return Price.CompareTo(other.Price);
         }
 
         public bool Equals([AllowNull] Supply other)
         {
-            throw new NotImplementedException();
+            return other != null && Id == other.Id;
         }
     }
 }
