@@ -44,6 +44,15 @@ namespace SuppliesPriceLister
             var supplies = new List<Supply>();
             supplies.AddRange(humpriesSupplies);
             supplies.AddRange(megacorpSupplies);
+            supplies.Sort((a, b) =>
+            {
+                if (a.Price > b.Price)
+                    return -1; // a's price is higher
+                else if (a.Price < b.Price)
+                    return 1; // b's price is higher
+
+                return 0; // equal
+            });
 
             RenderSupplies(supplies);
         }
