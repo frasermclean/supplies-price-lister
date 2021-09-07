@@ -41,7 +41,7 @@ namespace SuppliesPriceLister
             var megacorpSupplies = MegacorpJsonParser.GetMegacorpSupplies(MegacorpJsonFilename, exchangeRate);
 
             // create combined, sorted list of supplies
-            var supplies = new List<ISupply>();
+            var supplies = new List<Supply>();
             supplies.AddRange(humpriesSupplies);
             supplies.AddRange(megacorpSupplies);
 
@@ -52,7 +52,7 @@ namespace SuppliesPriceLister
         /// Prints a collection of supplies to the console.
         /// </summary>
         /// <param name="">The collection to render.</param>
-        private static void RenderSupplies(List<ISupply> supplies)
+        private static void RenderSupplies(List<Supply> supplies)
         {
             Console.WriteLine($"Rendering {supplies.Count} supplies." + Environment.NewLine);
 

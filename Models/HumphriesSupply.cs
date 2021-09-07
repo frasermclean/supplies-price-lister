@@ -2,19 +2,19 @@
 
 namespace SuppliesPriceLister.Models
 {
-    public class HumphriesSupply : ISupply
+    public class HumphriesSupply : Supply
     {
         [Name("identifier")]
-        public string Id { get; set; }
+        public override string Id { get; set; }
 
         [Name("desc")]
-        public string Description { get; set; }
+        public override string Description { get; set; }
 
         [Name("costAUD")]
-        public float Price { get; set; }
+        public override float Price { get; set; }
 
         [Name("unit")]
-        public string UnitOfMeasurement { get; set; }
+        public override string UnitOfMeasurement { get; set; }
 
         public HumphriesSupply(string identifier, string desc, string unit, float costAUD)
         {

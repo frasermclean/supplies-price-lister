@@ -2,14 +2,14 @@
 
 namespace SuppliesPriceLister.Models
 {
-    public class MegacorpSupply : ISupply
+    public class MegacorpSupply : Supply
     {
-        public string Id { get; set; }
-        public string Description { get; set; }
-        public float Price { get; set; }
+        public override string Id { get; set; }
+        public override string Description { get; set; }
+        public override float Price { get; set; }
 
         [JsonProperty("uom")]
-        public string UnitOfMeasurement { get; set; }
+        public override string UnitOfMeasurement { get; set; }
 
         /// <summary>
         /// Price in US cents.
