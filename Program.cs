@@ -54,7 +54,16 @@ namespace SuppliesPriceLister
         /// <param name="">The collection to render.</param>
         private static void RenderSupplies(List<ISupply> supplies)
         {
-            Console.WriteLine($"Rendering {supplies.Count} supplies.");
+            Console.WriteLine($"Rendering {supplies.Count} supplies." + Environment.NewLine);
+
+            string heading = string.Format("{0, -40}{1, -50}{2}", "ID", "Desription", "Price (AUD)");
+            Console.WriteLine(heading);
+
+            foreach (var supply in supplies)
+            {
+                string line = string.Format("{0, -40}{1, -50}{2, 11}", supply.Id, supply.Description, supply.Price);
+                Console.WriteLine(line);
+            }
         }
     }
 }
