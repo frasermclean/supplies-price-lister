@@ -14,6 +14,7 @@ namespace SuppliesPriceLister.Models
         /// <summary>
         /// Price in US cents.
         /// </summary>
+        [JsonProperty("priceInCents")]
         public uint PriceInUsCents { get; set; }
 
         /// <summary>
