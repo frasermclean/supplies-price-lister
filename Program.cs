@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using SuppliesPriceLister.Models;
 using System;
+using System.Collections.Generic;
 
 namespace SuppliesPriceLister
 {
@@ -7,7 +9,13 @@ namespace SuppliesPriceLister
     {
         private static float exchangeRate;
 
+        #region Constants
+
         private const string SettingsFilename = "appsettings.json";
+        private const string HumphriesCsvFilename = "humphries.csv";
+        private const string MegacorpJsonFilename = "megacorp.json";
+
+        #endregion
 
         public static void Main(string[] args)
         {
@@ -24,6 +32,19 @@ namespace SuppliesPriceLister
             }
 
             Console.WriteLine($"Current AUD to USD exchange rate is: {exchangeRate}");
+
+            var supplies = new List<ISupply>();
+
+            RenderSupplies(supplies);
+        }
+
+        /// <summary>
+        /// Prints a collection of supplies to the console.
+        /// </summary>
+        /// <param name="">The collection to render.</param>
+        private static void RenderSupplies(List<ISupply> supplies)
+        {
+            Console.WriteLine($"Rendering {supplies.Count} supplies.");
         }
     }
 }
