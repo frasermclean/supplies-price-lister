@@ -65,12 +65,16 @@ namespace SuppliesPriceLister
         {
             Console.WriteLine($"Rendering {supplies.Count} supplies." + Environment.NewLine);
 
-            string heading = string.Format("{0, -40}{1, -50}{2}", "ID", "Desription", "Price (AUD)");
+            string heading = string.Format("{0, -45}{1, -55}{2}", "ID", "Item Description", "Price (AUD)");
             Console.WriteLine(heading);
+
+            // draw a line accross the entire window width
+            for (int i = 0; i < Console.WindowWidth; i++)
+                Console.Write("-");
 
             foreach (var supply in supplies)
             {
-                string line = string.Format("{0, -40}{1, -50}{2, 11}", supply.Id, supply.Description, supply.Price);
+                string line = string.Format("{0, -45}{1, -55}{2, 11:C}", supply.Id, supply.Description, supply.Price);
                 Console.WriteLine(line);
             }
         }
