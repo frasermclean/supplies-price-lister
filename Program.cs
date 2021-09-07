@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using SuppliesPriceLister.Models;
+using SuppliesPriceLister.Parsing;
 using System;
 using System.Collections.Generic;
 
@@ -19,6 +20,8 @@ namespace SuppliesPriceLister
 
         public static void Main(string[] args)
         {
+            Console.WriteLine($"Reading configuration file: {SettingsFilename}");
+
             // read configuration from file
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddJsonFile(SettingsFilename, optional: false)
@@ -33,7 +36,12 @@ namespace SuppliesPriceLister
 
             Console.WriteLine($"Current AUD to USD exchange rate is: {exchangeRate}");
 
+            // read supply data from files
+            var humpriesSupplies = HumpriesCsvParser.GetHumphriesSupplies(HumphriesCsvFilename);
+
+            // create combined, sorted list of supplies
             var supplies = new List<ISupply>();
+            supplies.AddRange(humpriesSupplies);
 
             RenderSupplies(supplies);
         }
