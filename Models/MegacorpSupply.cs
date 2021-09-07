@@ -1,18 +1,25 @@
-﻿namespace SuppliesPriceLister.Models
+﻿using Newtonsoft.Json;
+
+namespace SuppliesPriceLister.Models
 {
-    public class MegacorpSupply : Supply
+    public class MegacorpSupply : ISupply
     {
-        public override float Price => PriceInCents / 100;
+        public string Id { get; set; }
+        public string Description { get; set; }
+        public float Price => PriceInCents / 100;
+
+        [JsonProperty("uom")]
+        public string UnitOfMeasurement { get; set; }
 
         /// <summary>
         /// Price in cents.
         /// </summary>
-        public uint PriceInCents { get; }
+        public uint PriceInCents { get; set; }
 
         /// <summary>
         /// Identifier of supply provider.
         /// </summary>
-        public string ProviderId { get; }
+        public string ProviderId { get; set; }
 
         /// <summary>
         /// Material type.

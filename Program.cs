@@ -38,10 +38,12 @@ namespace SuppliesPriceLister
 
             // read supply data from files
             var humpriesSupplies = HumpriesCsvParser.GetHumphriesSupplies(HumphriesCsvFilename);
+            var megacorpSupplies = MegacorpJsonParser.GetMegacorpSupplies(MegacorpJsonFilename);
 
             // create combined, sorted list of supplies
             var supplies = new List<ISupply>();
             supplies.AddRange(humpriesSupplies);
+            supplies.AddRange(megacorpSupplies);
 
             RenderSupplies(supplies);
         }

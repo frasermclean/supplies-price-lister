@@ -22,12 +22,4 @@
         /// </summary>
         public string UnitOfMeasurement { get; }
     }
-
-    public abstract class Supply : ISupply
-    {
-        public string Id { get; protected set; }
-        public string Description { get; protected set; }
-        public virtual float Price { get; protected set; }
-        public string UnitOfMeasurement { get; protected set; }
-    }
 }
